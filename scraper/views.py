@@ -11,8 +11,8 @@ def scrap(request):
     html = urlopen("https://www.avito.ru/perm/avtomobili/vaz_lada?user=1")
     bsObj = BeautifulSoup(html)
     model_list = bsObj.find("select", {"id": "flt_param_280"}).find_all("option")
-
-    return render(request, 'base.html', {'model_list': model_list})
+    year_list = bsObj.find("div", {"id": "param_188_from"}).find_all("option")
+    return render(request, 'base.html', {'model_list': model_list, 'year_list': year_list})
 
 
 def hours_ahead(request, offset):
