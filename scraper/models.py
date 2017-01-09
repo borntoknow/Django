@@ -14,9 +14,9 @@ class BodyType (models.Model):
 
 
 class Car (models.Model):
-    car_name = models.ForeignKey('CarName')
-    year = models.ForeignKey('Year')
-    body_type = models.ForeignKey('BodyType')
+    car_name = models.CharField(max_length=50)
+    year = models.CharField(max_length=50)
+    body_type = models.CharField(max_length=50)
     price = models.CharField(max_length=10)
     mileage = models.CharField(max_length=6)
 

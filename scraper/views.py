@@ -31,13 +31,22 @@ def scrap(request):
     for type in body_type_list:
         BodyType(name=type.text).save()
 
-    car_list = bs_obj.find("body").find_all("a", {"class": "item-description-title-link"})
+    car_list = bs_obj.find("body").\
+        find_all("div", {"class": "item item_table clearfix js-catalog-item-enum c-b-0 item_table_9"})
     for items in car_list:
-        Car(car_name=CarName.objects.get(name=items.text.split(",")[0].strip()).id).save()
+        car_name = items.find("a", {"class": "item-description-title-link"}).text.split(",")[0].strip()
+        year = items.find("a", {"class": "item-description-title-link"}).text.split(",")[1].strip()
+        car_price = items.find("div", {"class": "about"}).text.split(".")[0].strip()
+        Car(car_name=car_name, year=year, price=car_price).save()
 
-        # Car(year=items.text.split(",")[1]).save()
-
-    return render(request, 'base.html')
+    scrap_list = Car.objects.all()
+    filter_year = Year.objects.all()
+    filter_body_type = BodyType.objects.all()
+    filter_car_name = CarName.objects.all()
+    return render(request, 'base.html', {"scrap_list": scrap_list,
+                                         "filter_year": filter_year,
+                                         "filter_body_type": filter_body_type,
+                                         "filter_car_name": filter_car_name})
 
 
 def hours_ahead(request, offset):

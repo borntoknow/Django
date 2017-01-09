@@ -3,13 +3,19 @@
                 <p class="lead">Dns-Shop.ru</p>
                 <div class="list-group">
                     <select >
-                        <option value="">123123</option>
-                        <option value="">123123</option>
-                        <option value="">123123</option>
-                        <option value="">123123</option>
-                        <option value="">123123</option>
+                     {% for year in filter_year %}
+                           <option>{{ year.name }}</option>
+                     {% endfor %}
                     </select>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
+                     <select >
+                     {% for body_type in filter_body_type %}
+                           <option>{{ body_type.name }}</option>
+                     {% endfor %}
+                    </select>
+                     <select >
+                     {% for car_name in filter_car_name %}
+                           <option>{{ car_name.name }}</option>
+                     {% endfor %}
+                    </select>
                 </div>
             </div>
