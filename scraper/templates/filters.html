@@ -2,18 +2,21 @@
 <div class="col-md-3">
     <p class="lead">Avito.ru</p>
     <div class="list-group">
-    <form action="">
+    <form action="do_filter">
        <select name="year" >
+       <option value="" selected>-</option>
          {% for year in filter_year %}
                <option>{{ year.name }}</option>
          {% endfor %}
         </select>
          <select name="body_type" >
+         <option value="" selected>-</option>
          {% for body_type in filter_body_type %}
                <option>{{ body_type.name }}</option>
          {% endfor %}
         </select>
          <select name="car_name">
+         <option value="" selected>-</option>
          {% for car_name in filter_car_name %}
                <option>{{ car_name.name }}</option>
          {% endfor %}

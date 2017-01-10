@@ -56,9 +56,18 @@ def scrap(request):
     filter_year = Year.objects.all()
     filter_body_type = BodyType.objects.all()
     filter_car_name = CarName.objects.all()
-    return render(request, 'base.html', {"scrap_list": scrap_list,
+    return render(request, 'base.html', {"list": scrap_list,
                                          "filter_year": filter_year,
                                          "filter_body_type": filter_body_type,
                                          "filter_car_name": filter_car_name})
+
+
+def do_filter(request):
+    body_type = request.GET['body_type']
+    year = request.GET['year']
+    car_name = request.GET['car_name']
+
+    filter_list = Car.objects.filter(year__contains=year, body_type__contains=body_type, car_name__contains=car_name)
+    return render(request, "base.html", {"list": filter_list})
 
 

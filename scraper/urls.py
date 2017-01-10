@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 
 
-from scraper.views import scrap
+from scraper.views import scrap, do_filter
 
 urlpatterns = [
     url(r'^$', scrap, name='scrap'),
-
+    url(r'do_filter', do_filter)
 ]

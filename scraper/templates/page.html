@@ -7,16 +7,17 @@
         <thead>Год</thead>
         <thead>Тип кузова</thead>
         <thead>Пробег</thead>
-    {% for scrap in scrap_list %}
+    {% for item in list %}
         <tr>
-            <td>{{ scrap.car_name }}</td>
-            <td>{{ scrap.price }}</td>
-            <td>{{ scrap.year }}</td>
-            <td>{{ scrap.body_type }}</td>
-            <td>{{ scrap.mileage }}</td>
+            <td>{{ item.car_name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.year }}</td>
+            <td>{{ item.body_type }}</td>
+            <td>{{ item.mileage }}</td>
         </tr>
     {% endfor %}
     </table>
 </ul>
 </div>
 <!-- /.container -->
+
