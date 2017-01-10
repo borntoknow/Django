@@ -5,12 +5,15 @@
         <thead>Модель</thead>
         <thead>Цена</thead>
         <thead>Год</thead>
-
+        <thead>Тип кузова</thead>
+        <thead>Пробег</thead>
     {% for scrap in scrap_list %}
         <tr>
             <td>{{ scrap.car_name }}</td>
             <td>{{ scrap.price }}</td>
             <td>{{ scrap.year }}</td>
+            <td>{{ scrap.body_type }}</td>
+            <td>{{ scrap.mileage }}</td>
         </tr>
     {% endfor %}
     </table>
