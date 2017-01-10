@@ -19,5 +19,7 @@ class Car (models.Model):
     body_type = models.CharField(max_length=50)
     price = models.CharField(max_length=10)
     mileage = models.CharField(max_length=6)
+    pic_url = models.CharField(max_length=50)
+
 
 

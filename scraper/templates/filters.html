@@ -1,21 +1,24 @@
 
-            <div class="col-md-3">
-                <p class="lead">Dns-Shop.ru</p>
-                <div class="list-group">
-                    <select >
-                     {% for year in filter_year %}
-                           <option>{{ year.name }}</option>
-                     {% endfor %}
-                    </select>
-                     <select >
-                     {% for body_type in filter_body_type %}
-                           <option>{{ body_type.name }}</option>
-                     {% endfor %}
-                    </select>
-                     <select >
-                     {% for car_name in filter_car_name %}
-                           <option>{{ car_name.name }}</option>
-                     {% endfor %}
-                    </select>
-                </div>
-            </div>
+<div class="col-md-3">
+    <p class="lead">Avito.ru</p>
+    <div class="list-group">
+    <form action="">
+       <select name="year" >
+         {% for year in filter_year %}
+               <option>{{ year.name }}</option>
+         {% endfor %}
+        </select>
+         <select name="body_type" >
+         {% for body_type in filter_body_type %}
+               <option>{{ body_type.name }}</option>
+         {% endfor %}
+        </select>
+         <select name="car_name">
+         {% for car_name in filter_car_name %}
+               <option>{{ car_name.name }}</option>
+         {% endfor %}
+         </select>
+    <button type="submit">Применить</button>
+    </form>
+    </div>
+</div>

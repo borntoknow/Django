@@ -2,8 +2,6 @@ import datetime
 from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
-from django.http import Http404
-from django.http import HttpResponse
 from django.shortcuts import render
 
 from scraper.models import CarName, Year, Car, BodyType
@@ -37,6 +35,7 @@ def scrap(request):
         car_name = items.find("a", {"class": "item-description-title-link"}).text.split(",")[0].strip()
         year = items.find("a", {"class": "item-description-title-link"}).text.split(",")[1].strip()
         car_price = items.find("div", {"class": "about"}).text.split(".")[0].strip()
+        pic_url = items.find("a", {"class": "photo-wrapper js-photo-wrapper"}, href=True)
         Car(car_name=car_name, year=year, price=car_price).save()
 
     scrap_list = Car.objects.all()
@@ -49,11 +48,3 @@ def scrap(request):
                                          "filter_car_name": filter_car_name})
 
 
-def hours_ahead(request, offset):
-    try:
-        offset = int(offset)
-    except ValueError:
-        raise Http404()
-    dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
-    html = "<html><body>In %s hour(s), it will be %s.</body></html>" % (offset, dt)
-    return HttpResponse(html)

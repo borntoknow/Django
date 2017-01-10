@@ -17,9 +17,8 @@ from django.conf.urls import url
 
 
 from scraper.views import scrap
-from scraper.views import hours_ahead
+
 urlpatterns = [
     url(r'^$', scrap, name='scrap'),
-    url(r'^time/plus/(\d{1,2})/$', hours_ahead)
 
 ]
