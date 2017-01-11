@@ -2,11 +2,13 @@
 <!-- Page Content -->
 <div class="col-md-9">
     <table id="my_table" border="1">
-        <thead>Модель</thead>
-        <thead>Цена</thead>
-        <thead>Год</thead>
-        <thead>Тип кузова</thead>
-        <thead>Пробег</thead>
+    <tr>
+        <td>Модель</td>
+        <td>Цена</td>
+        <td>Год</td>
+        <td>Тип кузова</td>
+        <td>Пробег</td>
+    </tr>
     {% for item in list %}
         <tr>
             <td>{{ item.car_name }}</td>
